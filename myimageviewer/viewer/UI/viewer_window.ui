@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>763</width>
-    <height>447</height>
+    <width>874</width>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>743</width>
-         <height>384</height>
+         <width>854</width>
+         <height>631</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -34,6 +34,9 @@
          <widget class="QLabel" name="lblImage">
           <property name="text">
            <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -48,7 +51,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>763</width>
+     <width>874</width>
      <height>22</height>
     </rect>
    </property>
@@ -66,16 +69,7 @@
     </property>
     <addaction name="actAbout"/>
    </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>View</string>
-    </property>
-    <addaction name="actZoomIn"/>
-    <addaction name="actZoomOut"/>
-    <addaction name="actNormalSize"/>
-   </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

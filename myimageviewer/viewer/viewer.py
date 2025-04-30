@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-from PySide6.QtWidgets import QDialog, QFileDialog, QMainWindow, QMessageBox
+from PySide6.QtWidgets import (
+    QDialog,
+    QFileDialog,
+    QMainWindow,
+    QMessageBox,
+)
 from PySide6.QtGui import (
     QColorSpace,
     QGuiApplication,
@@ -69,12 +74,11 @@ class Viewer(QMainWindow):
             color_space = QColorSpace(QColorSpace.NamedColorSpace.SRgb)
             self._image.convertToColorSpace(color_space)
         self._ui.lblImage.setPixmap(QPixmap.fromImage(self._image))
+        self._ui.lblImage.adjustSize()
         self._scale_factor = 1.0
 
         self._ui.scrollImage.setVisible(True)
         self._update_actions()
-
-        self._ui.lblImage.adjustSize()
 
     def _save_file(self, fileName):
         writer = QImageWriter(fileName)
@@ -109,19 +113,6 @@ class Viewer(QMainWindow):
             pass
 
     @Slot()
-    def _zoom_in(self):
-        self._scale_image(1.25)
-
-    @Slot()
-    def _zoom_out(self):
-        self._scale_image(0.8)
-
-    @Slot()
-    def _normal_size(self):
-        self._ui.lblImage.adjustSize()
-        self._scale_factor = 1.0
-
-    @Slot()
     def _about(self):
         QMessageBox.about(self, "About Image Viewer", ABOUT)
 
@@ -134,15 +125,6 @@ class Viewer(QMainWindow):
 
         self._ui.actExit.triggered.connect(self.close)
 
-        self._ui.actZoomIn.triggered.connect(self._zoom_in)
-        self._ui.actZoomIn.setEnabled(False)
-
-        self._ui.actZoomOut.triggered.connect(self._zoom_out)
-        self._ui.actZoomOut.setEnabled(False)
-
-        self._ui.actNormalSize.triggered.connect(self._normal_size)
-        self._ui.actNormalSize.setEnabled(False)
-
         self._ui.actAbout.triggered.connect(self._about)
 
     def _update_actions(self):
@@ -151,23 +133,6 @@ class Viewer(QMainWindow):
         self._ui.actZoomIn.setEnabled(has_image)
         self._ui.actZoomOut.setEnabled(has_image)
         self._ui.actNormalSize.setEnabled(has_image)
-
-    def _scale_image(self, factor):
-        self._scale_factor *= factor
-        new_size = self._scale_factor * self._ui.lblImage.pixmap().size()
-        self._ui.lblImage.resize(new_size)
-
-        self._adjust_scrollbar(self._ui.scrollImage.horizontalScrollBar(), factor)
-        self._adjust_scrollbar(self._ui.scrollImage.verticalScrollBar(), factor)
-
-        self._ui.actZoomIn.setEnabled(self._scale_factor < 3.0)
-        self._ui.actZoomOut.setEnabled(self._scale_factor > 0.333)
-
-    def _adjust_scrollbar(self, scrollBar, factor):
-        pos = int(
-            factor * scrollBar.value() + ((factor - 1) * scrollBar.pageStep() / 2)
-        )
-        scrollBar.setValue(pos)
 
     def _initialize_image_filedialog(self, dialog, acceptMode):
         if self._first_file_dialog:

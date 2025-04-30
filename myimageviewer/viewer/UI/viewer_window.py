@@ -24,7 +24,7 @@ class Ui_mwViewer(object):
     def setupUi(self, mwViewer):
         if not mwViewer.objectName():
             mwViewer.setObjectName(u"mwViewer")
-        mwViewer.resize(763, 447)
+        mwViewer.resize(874, 694)
         self.actOpen = QAction(mwViewer)
         self.actOpen.setObjectName(u"actOpen")
         self.actExit = QAction(mwViewer)
@@ -48,11 +48,12 @@ class Ui_mwViewer(object):
         self.scrollImage.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 743, 384))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 854, 631))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.lblImage = QLabel(self.scrollAreaWidgetContents)
         self.lblImage.setObjectName(u"lblImage")
+        self.lblImage.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_2.addWidget(self.lblImage, 0, 0, 1, 1)
 
@@ -63,28 +64,22 @@ class Ui_mwViewer(object):
         mwViewer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(mwViewer)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 763, 22))
+        self.menubar.setGeometry(QRect(0, 0, 874, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
         self.menuHelp.setObjectName(u"menuHelp")
-        self.menuView = QMenu(self.menubar)
-        self.menuView.setObjectName(u"menuView")
         mwViewer.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(mwViewer)
         self.statusbar.setObjectName(u"statusbar")
         mwViewer.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFile.menuAction())
-        self.menubar.addAction(self.menuView.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.actSaveAs)
         self.menuFile.addAction(self.actExit)
         self.menuHelp.addAction(self.actAbout)
-        self.menuView.addAction(self.actZoomIn)
-        self.menuView.addAction(self.actZoomOut)
-        self.menuView.addAction(self.actNormalSize)
 
         self.retranslateUi(mwViewer)
 
@@ -109,6 +104,5 @@ class Ui_mwViewer(object):
         self.lblImage.setText("")
         self.menuFile.setTitle(QCoreApplication.translate("mwViewer", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("mwViewer", u"Help", None))
-        self.menuView.setTitle(QCoreApplication.translate("mwViewer", u"View", None))
     # retranslateUi
 
