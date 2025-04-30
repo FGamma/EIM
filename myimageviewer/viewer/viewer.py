@@ -130,9 +130,6 @@ class Viewer(QMainWindow):
     def _update_actions(self):
         has_image = not self._image.isNull()
         self._ui.actSaveAs.setEnabled(has_image)
-        self._ui.actZoomIn.setEnabled(has_image)
-        self._ui.actZoomOut.setEnabled(has_image)
-        self._ui.actNormalSize.setEnabled(has_image)
 
     def _initialize_image_filedialog(self, dialog, acceptMode):
         if self._first_file_dialog:
