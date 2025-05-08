@@ -24,13 +24,19 @@ class Ui_mwViewer(object):
     def setupUi(self, mwViewer):
         if not mwViewer.objectName():
             mwViewer.setObjectName(u"mwViewer")
-        mwViewer.resize(841, 600)
+        mwViewer.resize(986, 704)
         self.actOpen = QAction(mwViewer)
         self.actOpen.setObjectName(u"actOpen")
         self.actExit = QAction(mwViewer)
         self.actExit.setObjectName(u"actExit")
         self.actAbout = QAction(mwViewer)
         self.actAbout.setObjectName(u"actAbout")
+        self.actIn = QAction(mwViewer)
+        self.actIn.setObjectName(u"actIn")
+        self.actOut = QAction(mwViewer)
+        self.actOut.setObjectName(u"actOut")
+        self.actNormal = QAction(mwViewer)
+        self.actNormal.setObjectName(u"actNormal")
         self.centralwidget = QWidget(mwViewer)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -87,6 +93,18 @@ class Ui_mwViewer(object):
 
         self.vlayControl.addWidget(self.lblTypeImage)
 
+        self.wdgTypeImage = QWidget(self.centralwidget)
+        self.wdgTypeImage.setObjectName(u"wdgTypeImage")
+        sizePolicy1.setHeightForWidth(self.wdgTypeImage.sizePolicy().hasHeightForWidth())
+        self.wdgTypeImage.setSizePolicy(sizePolicy1)
+
+        self.vlayControl.addWidget(self.wdgTypeImage)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.vlayControl.addWidget(self.label)
+
         self.cbTypeImage = QComboBox(self.centralwidget)
         self.cbTypeImage.addItem("")
         self.cbTypeImage.addItem("")
@@ -99,34 +117,33 @@ class Ui_mwViewer(object):
 
         self.vlayControl.addWidget(self.cbTypeImage)
 
-        self.wdgTypeImage = QWidget(self.centralwidget)
-        self.wdgTypeImage.setObjectName(u"wdgTypeImage")
-        sizePolicy1.setHeightForWidth(self.wdgTypeImage.sizePolicy().hasHeightForWidth())
-        self.wdgTypeImage.setSizePolicy(sizePolicy1)
-
-        self.vlayControl.addWidget(self.wdgTypeImage)
-
 
         self.horizontalLayout.addLayout(self.vlayControl)
 
         mwViewer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(mwViewer)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 841, 22))
+        self.menubar.setGeometry(QRect(0, 0, 986, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
         self.menuHelp.setObjectName(u"menuHelp")
+        self.menuBlue_Brightness = QMenu(self.menubar)
+        self.menuBlue_Brightness.setObjectName(u"menuBlue_Brightness")
         mwViewer.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(mwViewer)
         self.statusbar.setObjectName(u"statusbar")
         mwViewer.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFile.menuAction())
+        self.menubar.addAction(self.menuBlue_Brightness.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
         self.menuFile.addAction(self.actOpen)
         self.menuFile.addAction(self.actExit)
         self.menuHelp.addAction(self.actAbout)
+        self.menuBlue_Brightness.addAction(self.actIn)
+        self.menuBlue_Brightness.addAction(self.actOut)
+        self.menuBlue_Brightness.addAction(self.actNormal)
 
         self.retranslateUi(mwViewer)
 
@@ -138,9 +155,19 @@ class Ui_mwViewer(object):
         self.actOpen.setText(QCoreApplication.translate("mwViewer", u"Open...", None))
         self.actExit.setText(QCoreApplication.translate("mwViewer", u"Exit", None))
         self.actAbout.setText(QCoreApplication.translate("mwViewer", u"About", None))
-        self.lblImage.setText(QCoreApplication.translate("mwViewer", u"TextLabel", None))
-        self.lblContrast.setText(QCoreApplication.translate("mwViewer", u"TextLabel", None))
-        self.lblTypeImage.setText(QCoreApplication.translate("mwViewer", u"TextLabel", None))
+        self.actIn.setText(QCoreApplication.translate("mwViewer", u"In (25%)", None))
+#if QT_CONFIG(shortcut)
+        self.actIn.setShortcut(QCoreApplication.translate("mwViewer", u"Ctrl++", None))
+#endif // QT_CONFIG(shortcut)
+        self.actOut.setText(QCoreApplication.translate("mwViewer", u"Out (25%)", None))
+#if QT_CONFIG(shortcut)
+        self.actOut.setShortcut(QCoreApplication.translate("mwViewer", u"Ctrl+-", None))
+#endif // QT_CONFIG(shortcut)
+        self.actNormal.setText(QCoreApplication.translate("mwViewer", u"Normal", None))
+        self.lblImage.setText(QCoreApplication.translate("mwViewer", u"Load Image", None))
+        self.lblContrast.setText(QCoreApplication.translate("mwViewer", u"Contrast", None))
+        self.lblTypeImage.setText(QCoreApplication.translate("mwViewer", u"Image color scale", None))
+        self.label.setText(QCoreApplication.translate("mwViewer", u"Color scale type:", None))
         self.cbTypeImage.setItemText(0, QCoreApplication.translate("mwViewer", u"Grayscale", None))
         self.cbTypeImage.setItemText(1, QCoreApplication.translate("mwViewer", u"Red", None))
         self.cbTypeImage.setItemText(2, QCoreApplication.translate("mwViewer", u"Green", None))
@@ -149,5 +176,6 @@ class Ui_mwViewer(object):
 
         self.menuFile.setTitle(QCoreApplication.translate("mwViewer", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("mwViewer", u"Help", None))
+        self.menuBlue_Brightness.setTitle(QCoreApplication.translate("mwViewer", u"Blue Brightness", None))
     # retranslateUi
 

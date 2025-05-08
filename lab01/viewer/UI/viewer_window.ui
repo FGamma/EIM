@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>841</width>
-    <height>600</height>
+    <width>986</width>
+    <height>704</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Load Image</string>
         </property>
        </widget>
       </item>
@@ -49,7 +49,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Contrast</string>
         </property>
        </widget>
       </item>
@@ -79,7 +79,24 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>Image color scale</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="wdgTypeImage" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Color scale type:</string>
         </property>
        </widget>
       </item>
@@ -118,16 +135,6 @@
         </item>
        </widget>
       </item>
-      <item>
-       <widget class="QWidget" name="wdgTypeImage" native="true">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
    </layout>
@@ -137,7 +144,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>841</width>
+     <width>986</width>
      <height>22</height>
     </rect>
    </property>
@@ -154,7 +161,16 @@
     </property>
     <addaction name="actAbout"/>
    </widget>
+   <widget class="QMenu" name="menuBlue_Brightness">
+    <property name="title">
+     <string>Blue Brightness</string>
+    </property>
+    <addaction name="actIn"/>
+    <addaction name="actOut"/>
+    <addaction name="actNormal"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuBlue_Brightness"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -171,6 +187,27 @@
   <action name="actAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actIn">
+   <property name="text">
+    <string>In (25%)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="actOut">
+   <property name="text">
+    <string>Out (25%)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actNormal">
+   <property name="text">
+    <string>Normal</string>
    </property>
   </action>
  </widget>
