@@ -21,4 +21,7 @@ def load_image(path: Path) -> FileDataset:
 
     image = dcmread(path)
 
+    if image is None:
+        raise ValueError("File could not be read.")
+
     return image
